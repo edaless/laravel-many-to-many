@@ -18,7 +18,7 @@ class categoryFactory extends Factory
     {
         return [
             'code' => fake()->randomNumber(5, true),
-            'name' => fake()->words(rand(1, 5), true),
+            'name' => fake()->words(rand(1, 3), true),
             'description' => fake()->text(rand(50, 200)),
         ];
     }
