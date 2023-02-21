@@ -28,8 +28,8 @@ class productSeeder extends Seeder
             // tutte le relazioni molti a molti (con tabella ponte)
             // vanno valorizzate dopo la save
 
-            // prendiamo 5 categorie casuali
-            $categories = Category::inRandomOrder()->limit(5)->get();
+            // prendiamo da una a 5 categorie casuali
+            $categories = Category::inRandomOrder()->limit(rand(1, 5))->get();
             // le associamo al prodotto $p
             $p->categories()->attach($categories);
         });
