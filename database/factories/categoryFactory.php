@@ -17,7 +17,7 @@ class categoryFactory extends Factory
     public function definition()
     {
         return [
-            'code' => fake()->randomNumber(5, true),
+            'code' => fake()->regexify('[A-Z0-9]{5}'),
             'name' => fake()->words(rand(1, 3), true),
             'description' => fake()->text(rand(50, 200)),
         ];
