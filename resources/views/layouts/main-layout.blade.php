@@ -11,13 +11,15 @@
 
 </head>
 <body>
+    <div class="container">
     
-    @include('components.header')
-    @include('components.errors')
+        @include('components.header')
+        @include('components.errors')
 
-    @yield('content')
+        @yield('content')
 
-    @include('components.footer')
+        @include('components.footer')
+    </div>
     
 </body>
 </html>

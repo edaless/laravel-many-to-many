@@ -25,6 +25,15 @@
         
     </select>
     <br>
+    <br>
+    <h5>categories:</h5>
+    @foreach ($categories as $category)
+        
+        <input type="checkbox" name="categories[]" value="{{$category -> id}}">
+        <label for="categories">{{$category -> name}}</label>
+        <br>
+    @endforeach
+    <br>
     <input type="submit" value="Create">
 </form>
     

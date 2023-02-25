@@ -25,17 +25,25 @@ class MainController extends Controller
     public function productCreate()
     {
         $typologies = Typology::all();
+        $categories = Category::all();
 
-        return view('pages.product.create', compact('typologies'));
+        return  view(
+            'pages.product.create',
+            compact('typologies', 'categories')
+        );
     }
     public function productStore(Request $request)
     {
+
+        // dd($request->all());
+
         $data = $request->validate([
             'name' => 'required|string|max:64',
             'description' => 'nullable|string',
             'price' => 'required|integer',
             'weight' => 'required|integer',
             'typology_id' => 'required|integer',
+            'categories' => 'required|array',
         ]);
 
         $code = rand(10000, 99999);
@@ -50,6 +58,10 @@ class MainController extends Controller
         // salvo il prodotto                                    
         $product->save();
 
-        return redirect()->route('home');
+        $categories = Category::find($data['categories']);
+        $product->categories()->attach($categories);
+
+
+        return redirect()->route('product.home');
     }
 }
