@@ -27,11 +27,7 @@ class productSeeder extends Seeder
             $p->typology()->associate($typology);
 
             // *salvo*
-            // le chiavi esterne vanno valorizzate prima della save
             $p->save();
-            // tutte le relazioni molti a molti (con tabella ponte)
-            // vanno valorizzate dopo la save
-
 
             // MANY TO MANY (con una tabella apposta per le chiavi di relazione)
             // prendiamo da una a 5 categorie casuali
@@ -41,3 +37,10 @@ class productSeeder extends Seeder
         });
     }
 }
+// le chiavi esterne vanno valorizzate prima della save
+// tutte le relazioni molti a molti (con tabella ponte) vanno valorizzate dopo la save
+
+// 'creo prodotto'                    
+// 'prendo tipologia da db'           
+// 'associo prodotto alla tipologia' 
+// 'salvo il prodotto'                
