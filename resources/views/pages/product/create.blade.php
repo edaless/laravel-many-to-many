@@ -1,6 +1,11 @@
 @extends('layouts.main-layout')
 
 @section('content')
+
+<a href="{{ route('home')}}">
+    Home
+</a>
+<br>
 <h1>create new product</h1>
 <form method="post" action="{{route('product.store')}}">
     @csrf

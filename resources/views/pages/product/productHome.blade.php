@@ -2,6 +2,10 @@
 
 @section('content')
 
+<a href="{{ route('home')}}">
+    Home
+</a>
+<br>
 <a href="{{ route('product.create')}}">
                         CREATE NEW PRODUCT
 </a>

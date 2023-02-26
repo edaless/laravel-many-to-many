@@ -1,7 +1,12 @@
 @extends('layouts.main-layout')
 
 @section('content')
+<h1>HOME</h1>
 
+<a href="{{ route('product.home')}}">
+    PRODUCTS
+</a>
+<br>
 <a href="{{ route('product.create')}}">
                         CREATE NEW PRODUCT
 </a>
@@ -25,6 +30,12 @@
                     <br>
                     digital:
                     {{$product -> typology -> digital ? "YES" : "NO"}}
+                    <br>
+                    <a href="#">EDIT</a>
+                    -
+                    <a href="{{ route('product.delete', $product)}}">
+                        DELETE
+                    </a>
 
 
                 </li>

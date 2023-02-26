@@ -20,7 +20,8 @@ class MainController extends Controller
     public function products()
     {
         $products = Product::all();
-        return view('pages.product.home', compact('products'));
+
+        return view('pages.product.productHome', compact('products'));
     }
     public function productCreate()
     {
@@ -53,6 +54,7 @@ class MainController extends Controller
         $product = Product::make($data);
         // prendo tipologia da db                           
         $typology = Typology::find($data['typology_id']);
+
         // associo prodotto alla tipologia                               
         $product->typology()->associate($typology);
         // salvo il prodotto                                    
@@ -63,5 +65,17 @@ class MainController extends Controller
 
 
         return redirect()->route('product.home');
+    }
+    public function productDelete(Product $product)
+    {
+        // devo eliminare tutte le righe della rabella ponte che contengono l'id del prodotto che sto per eliminare
+        $product->categories()->sync([]);
+
+
+        // elimino il prodotto
+        $product->delete();
+
+
+        return redirect()->route('home');
     }
 }
