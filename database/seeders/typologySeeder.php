@@ -11,6 +11,6 @@ class typologySeeder extends Seeder
 
     public function run()
     {
-        Typology::factory()->count(15)->create();
+        Typology::factory()->count(5)->create();
     }
 }

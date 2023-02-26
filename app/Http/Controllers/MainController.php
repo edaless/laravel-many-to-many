@@ -64,7 +64,41 @@ class MainController extends Controller
         $product->categories()->attach($categories);
 
 
-        return redirect()->route('product.home');
+        return redirect()->route('home');
+    }
+    public function productEdit(Product $product)
+    {
+        $typologies = Typology::all();
+        $categories = Category::all();
+
+        return view('pages.product.edit', compact('product', 'typologies', 'categories'));
+    }
+    public function productUpdate(Request $request, Product $product)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:64',
+            'description' => 'nullable|string',
+            'price' => 'required|integer',
+            'weight' => 'required|integer',
+            'typology_id' => 'required|integer',
+            'categories' => 'required|array',
+        ]);
+
+        // aggiorno prodotto                                          
+        $product->update($data);
+        // prendo tipologia da db                           
+        $typology = Typology::find($data['typology_id']);
+
+        // associo prodotto alla tipologia                               
+        $product->typology()->associate($typology);
+        // salvo il prodotto                                    
+        $product->save();
+
+        $categories = Category::find($data['categories']);
+        $product->categories()->sync($categories);
+
+
+        return redirect()->route('home');
     }
     public function productDelete(Product $product)
     {

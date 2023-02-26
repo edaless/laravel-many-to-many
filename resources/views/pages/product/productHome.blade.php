@@ -9,6 +9,7 @@
 <a href="{{ route('product.create')}}">
                         CREATE NEW PRODUCT
 </a>
+<h1>PRODUCTS</h1>
     <ol>
     @foreach ($products as $product)
         <li>
@@ -20,6 +21,14 @@
             <br>
             digital:
             {{$product -> typology -> digital ? "YES" : "NO"}}
+            <br>
+            <a href="{{ route('product.edit', $product)}}">
+                EDIT
+            </a>
+            -
+            <a href="{{ route('product.delete', $product)}}">
+                DELETE
+            </a>
 
 
         </li>

@@ -31,7 +31,9 @@
                     digital:
                     {{$product -> typology -> digital ? "YES" : "NO"}}
                     <br>
-                    <a href="#">EDIT</a>
+                    <a href="{{ route('product.edit', $product)}}">
+                        EDIT
+                    </a>
                     -
                     <a href="{{ route('product.delete', $product)}}">
                         DELETE

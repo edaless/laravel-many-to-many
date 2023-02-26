@@ -16,7 +16,7 @@ class productSeeder extends Seeder
     public function run()
     {
         // *faccio*
-        Product::factory()->count(200)->make()->each(function ($p) {
+        Product::factory()->count(20)->make()->each(function ($p) {
             // create() = make() + save()
 
             // FOREIGN KEY  (dentro la tabella)
